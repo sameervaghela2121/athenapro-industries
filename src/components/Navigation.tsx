@@ -23,6 +23,12 @@ const Navigation = () => {
             <Link to="/hospitality" className="text-foreground hover:text-primary transition-colors">
               Hospitality
             </Link>
+            <a href="#pricing" className="text-foreground hover:text-primary transition-colors">
+              Pricing
+            </a>
+            <a href="#contact" className="text-foreground hover:text-primary transition-colors">
+              Contact
+            </a>
             <Button>Login</Button>
           </div>
         </div>

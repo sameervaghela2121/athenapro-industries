@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, ShoppingBag, Utensils, Hotel } from "lucide-react";
 import { Link } from "react-router-dom";
+import EnterpriseFeatures from "@/components/EnterpriseFeatures";
+import PricingSection from "@/components/PricingSection";
+import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
@@ -129,20 +132,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Transform Your Knowledge Management?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Join leading enterprises using AthenaPro for seamless information flow
-          </p>
-          <Button size="lg" className="gap-2">
-            Get Started Today <ArrowRight className="w-5 h-5" />
-          </Button>
-        </div>
-      </section>
+      {/* Enterprise Features */}
+      <EnterpriseFeatures />
+
+      {/* Pricing Section */}
+      <PricingSection />
+
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 };
