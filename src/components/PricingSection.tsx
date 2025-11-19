@@ -5,52 +5,42 @@ import { Check } from "lucide-react";
 const PricingSection = () => {
   const plans = [
     {
-      name: "Starter",
-      price: "$499",
-      period: "/month",
-      description: "Perfect for small teams getting started",
+      name: "Business Standard",
+      price: "$2",
+      period: "/ Per User / Month",
+      subtitle: "Queries Per Month - pooled between all users",
+      pricingDetail: "$10/month for 1000 queries (~5 Users)",
+      badge: "2 Month Free",
+      promotion: "Enjoy 2 months free.",
+      description: "What's included:",
       features: [
-        "Up to 100 users",
-        "5GB knowledge base storage",
-        "Basic AI-powered search",
-        "Email support",
-        "Single location",
-        "Standard integrations"
-      ]
-    },
-    {
-      name: "Professional",
-      price: "$1,499",
-      period: "/month",
-      description: "For growing businesses scaling operations",
-      features: [
-        "Up to 500 users",
-        "50GB knowledge base storage",
-        "Advanced AI analytics",
-        "Priority support (24/7)",
-        "Multi-location support",
-        "Custom integrations",
-        "Role-based access control",
-        "Advanced reporting"
+        "Key Athena Features",
+        "Support a wide number of formats, including text, pdf, word, video & more",
+        "No limit on the number of users",
+        "Free dedicated app on iOS and Android",
+        "24/7 priority support",
+        "Buy Extra Queries"
       ],
-      popular: true
+      buttonText: "Start Now",
+      headerColor: "bg-primary"
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      description: "Tailored solutions for large organizations",
+      name: "Large Enterprise",
+      isCustom: true,
+      customTitle: "Custom Pricing",
+      customDescription: "For large operations that need maximum control, compliance, and customization.",
+      description: "What's included:",
       features: [
-        "Unlimited users",
-        "Unlimited storage",
-        "White-label options",
-        "Dedicated account manager",
-        "Global multi-location",
-        "Custom AI training",
-        "SLA guarantees",
-        "On-premise deployment option",
-        "Advanced security features"
-      ]
+        "All the features of Business Standard",
+        "Support Custom ID systems (e.g., Okta, Entra)",
+        "Support Complex Corporate Hierarchies",
+        "Custom Dashboards and Analytics",
+        "Specialized Franchise Billing Options",
+        "Custom Pricing Options",
+        "Dedicated Customer Success Manager"
+      ],
+      buttonText: "Contact Sales",
+      headerColor: "bg-gradient-to-r from-purple-600 to-purple-700"
     }
   ];
 
@@ -66,48 +56,75 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <Card
               key={plan.name}
-              className={`p-8 relative ${
-                plan.popular
-                  ? "border-primary shadow-lg scale-105"
-                  : "border-border"
-              }`}
+              className="overflow-hidden border-2"
             >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="flex items-baseline justify-center mb-2">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground ml-1">{plan.period}</span>
-                </div>
-                <p className="text-muted-foreground">{plan.description}</p>
+              <div className={`${plan.headerColor} text-white px-6 py-4`}>
+                <h3 className="text-2xl font-bold">{plan.name}</h3>
               </div>
+              
+              <div className="p-6">
+                {plan.isCustom ? (
+                  <div className="mb-6">
+                    <h4 className="text-3xl font-bold mb-4">{plan.customTitle}</h4>
+                    <p className="text-muted-foreground">{plan.customDescription}</p>
+                  </div>
+                ) : (
+                  <div className="mb-6">
+                    <div className="flex items-baseline mb-2">
+                      <span className="text-4xl font-bold text-primary">{plan.price}</span>
+                      <span className="text-muted-foreground ml-1">{plan.period}</span>
+                    </div>
+                    {plan.subtitle && (
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-5 h-5 rounded-full border-2 border-muted-foreground flex items-center justify-center">
+                          <span className="text-xs text-muted-foreground">i</span>
+                        </div>
+                        <span className="text-sm text-muted-foreground">{plan.subtitle}</span>
+                      </div>
+                    )}
+                    {plan.pricingDetail && (
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-sm">{plan.pricingDetail}</span>
+                        {plan.badge && (
+                          <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                            {plan.badge}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    {plan.promotion && (
+                      <p className="text-sm text-muted-foreground mb-4">{plan.promotion}</p>
+                    )}
+                  </div>
+                )}
 
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-5 h-5 rounded border border-muted-foreground"></div>
+                    <h4 className="font-semibold">{plan.description}</h4>
+                  </div>
+                  <ul className="space-y-3">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              <Button
-                className="w-full"
-                variant={plan.popular ? "default" : "outline"}
-              >
-                {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
-              </Button>
+                <Button
+                  className="w-full"
+                  variant={plan.isCustom ? "outline" : "default"}
+                  size="lg"
+                >
+                  {plan.buttonText}
+                </Button>
+              </div>
             </Card>
           ))}
         </div>
