@@ -2,6 +2,9 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ShoppingBag, Users, TrendingUp, MessageSquare, BarChart3, Package } from "lucide-react";
+import EnterpriseFeatures from "@/components/EnterpriseFeatures";
+import PricingSection from "@/components/PricingSection";
+import ContactSection from "@/components/ContactSection";
 
 const Retail = () => {
   return (
@@ -130,20 +133,14 @@ const Retail = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold mb-6">
-            Ready to Revolutionize Your Retail Operations?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Join leading retailers using AthenaPro to empower their teams
-          </p>
-          <Button size="lg" className="gap-2">
-            Schedule a Demo
-          </Button>
-        </div>
-      </section>
+      {/* Enterprise Features */}
+      <EnterpriseFeatures />
+
+      {/* Pricing Section */}
+      <PricingSection />
+
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 };
